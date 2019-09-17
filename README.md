@@ -36,7 +36,7 @@ The data collection is done using [*TrendSniper*](https://www.github.com/xbvu/Tr
 
 `git push --set-upstream origin features/new-feature`
 
-**9. open the [branches](https://github.com/xbvu/TrendSniper/branches) page**
+**9. open the [branches](https://github.com/xbvu/Trends/branches) page**
 
 **10. select your branch under "Your branches" and click on "New pull request"**
 
