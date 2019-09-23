@@ -3,7 +3,6 @@ function Main(){
 }
 
 function CreateChart(LabelsArrPr, DataArrPr){
-    alert("function triggered") //for debug
     var Ctx = document.getElementById('CanvasLC');
     var LineChart = new Chart(Ctx, {
         type: "line",
@@ -15,6 +14,7 @@ function CreateChart(LabelsArrPr, DataArrPr){
             }]
         },
         options: {
+			responsive: false,
             scales: {
                 yAxes: [{
                     ticks: {
