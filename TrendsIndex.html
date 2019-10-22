@@ -4,6 +4,7 @@
     <script id="ExtJS" src="scripts/Chart.min.js"></script>
     <script id="Cjs" src="scripts/TrendChart.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/ChartsStyles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="Main()">
     <div>
@@ -20,6 +21,7 @@
             </select>
     
             <!--TODO make the button integrated into the searchbox later-->
+            <!--TODO need to make the form responsive (bootstrap maybe ??)-->
             <input
                 name = "SearchBox"
                 type = "text"
@@ -34,7 +36,9 @@
         
         <div>
             <p1>pick a start date:</p1>
-            <input type="date" name="StartDate">
+            <input 
+                type="date" 
+                name="StartDate">
         </div>
 
         <div>
