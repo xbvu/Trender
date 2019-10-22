@@ -3,6 +3,7 @@
     <title>Document1</title>
     <script id="ExtJS" src="scripts/Chart.min.js"></script>
     <script id="Cjs" src="scripts/TrendChart.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/ChartsStyles.css">
 </head>
 <body onload="Main()">
     <div>
@@ -16,6 +17,18 @@
             <option value="week">Week</option>
             <option value="month">Month</option>
         </select>
+
+        <!--! make the button integrated into the searchbox later-->
+        <input
+            name = "SearchBox"
+            type = "text"
+            placeholder ="search">
+
+        <button 
+            type = "submit"
+            class = "SubmitButton">
+        </button>
+
     </div>
 </body>
 </html>
