@@ -11,24 +11,36 @@
             id="CanvasLC" width="25" height="25"
         ></canvas>
     </div>
-    <div>
-        <select name="Time Options" id="CBTime">
-            <option value="day">Day</option>
-            <option value="week">Week</option>
-            <option value="month">Month</option>
-        </select>
+    <form>
+        <div>
+            <select name="Time Options" id="CBTime">
+                <option value="day">Day</option>
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+            </select>
+    
+            <!--TODO make the button integrated into the searchbox later-->
+            <input
+                name = "SearchBox"
+                type = "text"
+                placeholder ="search">
+    
+            <button 
+                type = "submit"
+                class = "SubmitButton">
+            </button>
+        </div>
+    <!--? not sure if div style is on industry standard of coding-->
+        
+        <div>
+            <p1>pick a start date:</p1>
+            <input type="date" name="StartDate">
+        </div>
 
-        <!--! make the button integrated into the searchbox later-->
-        <input
-            name = "SearchBox"
-            type = "text"
-            placeholder ="search">
-
-        <button 
-            type = "submit"
-            class = "SubmitButton">
-        </button>
-
-    </div>
+        <div>
+                <p1>pick an end date</p1>
+                <input type="date" name="EndDate">
+        </div>
+    </form>
 </body>
 </html>
