@@ -1,0 +1,33 @@
+*
+*::before
+*::after{
+    margin: 0;
+    padding: 0;
+    /*this forces inheritance this makes every element in the html inherit ther box sizing from body*/
+    box-sizing: inherit;
+}
+
+html{
+    /* 
+    we do this to help the user have diffrent fonmty sizes if they changed it or soemthing because they might have issues or something
+    */
+    //this difnes what one rem is 
+    font-size: 62.5%;
+    //1 rem =10 px .10px/16px =62.5%
+    @include respond(tab-land){//width < 900?
+        font-size: 56.25%; //1 rem =9 px,9/16px = 56.25%
+    }//we passs a whole block of code in it 
+
+    @include respond(tab-port){ //width < 600?
+        font-size: 50%; //1 rem =8 px,8/16px = 50%
+    }//we passs a whole block of code in it
+
+       @include respond(big-desktop){
+        font-size: 75%; //1 rem = 12 ,12/16=75%
+    }//we passs a whole block of code in it  
+     
+}
+body{
+
+    box-sizing: border-box;
+}

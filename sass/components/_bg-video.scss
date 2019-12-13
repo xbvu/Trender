@@ -1,0 +1,19 @@
+.bg-video{
+    position: absolute;
+    top: 0;
+    left: 0; 
+    //Height and width of the container not the whole thing and set the contianer to relative
+    height: 100%;
+    width:100%;
+    z-index: -1;
+    opacity: .15;
+    //if something overflows to fix it we use
+    overflow: hidden;
+    //To center and put the video in the middle and stop it from overflowinf
+    &__content{
+        height: 100%;
+        width: 100%;
+//the video will fill the entire parent the parts which dont fill will be clipped off it works with alll HTml elements even images etcs
+        object-fit: cover;
+    }
+}
