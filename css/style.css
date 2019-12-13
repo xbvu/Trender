@@ -72,6 +72,13 @@ body {
   letter-spacing: 2px;
   transition: all .2s; }
 
+.heading-primary-search {
+  font-size: 2rem;
+  letter-spacing: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000; }
+
 .heading-tertiary {
   font-size: 1.6rem;
   text-transform: uppercase;
@@ -96,6 +103,9 @@ body {
 
 .u-margin-top-big {
   margin-top: 8rem !important; }
+
+.u-margin-top-medium {
+  margin-top: 3rem !important; }
 
 .u-margin-top-very-big {
   margin-top: 10rem !important; }
@@ -636,7 +646,7 @@ body {
 .header {
   position: relative;
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.95)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.95)), url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
@@ -645,8 +655,12 @@ body {
     position: absolute;
     top: 4rem;
     left: 4rem; }
+    .header__logo-box-center {
+      top: 4rem;
+      text-align: center; }
   .header__logo {
-    height: 2rem; }
+    height: 2rem;
+    padding: 5.5rem; }
   .header__text-box {
     /* So this is to center the text box basically*/
     position: absolute;

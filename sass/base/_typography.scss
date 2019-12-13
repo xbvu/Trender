@@ -34,6 +34,16 @@ body{
 
  
 }
+
+.heading-primary-search{
+    font-size: 2rem;
+    letter-spacing: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color:$color-black;
+ 
+}
+
 .heading-tertiary{
     font-size: $default-font-size;
     text-transform: uppercase;
@@ -45,4 +55,5 @@ body{
     &:not(:last-child){
         margin-bottom: 3rem;
     }
+
 }
