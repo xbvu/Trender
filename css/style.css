@@ -669,6 +669,9 @@ body {
     transform: translate(-50%, -50%);
     text-align: center; }
 
+.main-info-box {
+  padding: 1rem 4rem; }
+
 .row {
   max-width: 114rem;
   margin: 0 auto; }
@@ -697,7 +700,7 @@ body {
 
 .footer {
   background-color: #141414;
-  padding: 10rem 0;
+  padding: 3rem;
   font-size: 1.4rem;
   color: #f7f7f7; }
   .footer__logo-box {
