@@ -1,0 +1,31 @@
+.form{
+    &__group:not(:last-child){
+        margin-bottom: 3rem;
+        padding-left: 2.5rem;
+        padding-right: 2rem;
+
+    }
+    &__input{
+        font-size: 1.3rem;
+        padding: 1.5rem 3rem;//we normally give it a bit more on the sides 
+        border-radius: 12rem;
+        color: inherit;//input element doesnt inherit colors and font type
+        background-color:rgba($color-white,1);
+        font-family: inherit;//inherits the font from the parent 
+        border:none;
+      //  border-bottom:3px solid transparent;//so we dont get the box below moving down when we click first name
+        width: 90%;
+        display:block;
+        transition: all .3s;
+        
+
+       
+        &:focus{
+            //is the focused state of the input
+            //this is the outline browser gives by default
+            outline: none;
+  //          box-shadow: 0 1rem 2rem rgba($color-black, .1);
+   //         border-bottom: 3px solid $color-primary;//gives the small outline below  the 3px is the boreder size solid is the border style and then its is the color
+        }   
+    }
+}
