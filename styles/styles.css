@@ -1,0 +1,12 @@
+canvas{
+    margin: auto;
+    align-content: center;
+    padding: 10px,10px,10px,10px;
+}
+header{
+    margin: auto;
+    align-self: center;
+    left: 50%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
