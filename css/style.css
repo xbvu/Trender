@@ -190,10 +190,10 @@ body {
     text-align: center; }
     .results-graph-canvas {
       display: initial !important;
-      width: 30rem !important;
-      height: 15rem !important; }
+      width: 28rem !important;
+      height: 13rem !important; }
     .results-graph-img {
-      height: 15vh; }
+      height: 17vh; }
 
 .card {
   perspective: 150rem;
