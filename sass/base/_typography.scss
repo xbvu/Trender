@@ -40,8 +40,15 @@ body{
     letter-spacing: 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
-    color:$color-black;
- 
+    color:$color-black; 
+}
+
+.heading-graph-text{
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color:$color-black; 
+    margin-bottom: 2rem;
 }
 
 .heading-tertiary{

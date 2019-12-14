@@ -1,0 +1,12 @@
+.results{
+    height: 30vh;
+    
+    &-graph{
+        padding-top: 2rem;
+       
+        text-align: center;
+        &-img{
+            height:15vh;
+        }
+    }
+}

@@ -79,6 +79,13 @@ body {
   font-weight: 700;
   color: #000; }
 
+.heading-graph-text {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 2rem; }
+
 .heading-tertiary {
   font-size: 1.6rem;
   text-transform: uppercase;
@@ -175,6 +182,14 @@ body {
   .book__form {
     width: 50%;
     padding: 6rem; }
+
+.results {
+  height: 30vh; }
+  .results-graph {
+    padding-top: 2rem;
+    text-align: center; }
+    .results-graph-img {
+      height: 15vh; }
 
 .card {
   perspective: 150rem;
@@ -744,3 +759,8 @@ body {
     padding-top: 0.5rem;
     width: 80%;
     float: right; }
+
+.display-graph {
+  text-align: center; }
+  .display-graph-img {
+    width: 50rem; }
