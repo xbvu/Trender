@@ -188,6 +188,10 @@ body {
   .results-graph {
     padding-top: 2rem;
     text-align: center; }
+    .results-graph-canvas {
+      display: initial !important;
+      width: 30rem !important;
+      height: 15rem !important; }
     .results-graph-img {
       height: 15vh; }
 

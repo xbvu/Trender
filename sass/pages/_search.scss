@@ -5,6 +5,12 @@
         padding-top: 2rem;
        
         text-align: center;
+        
+        &-canvas{
+            display: initial !important;
+            width:30rem !important;
+            height: 15rem !important;
+        }
         &-img{
             height:15vh;
         }
