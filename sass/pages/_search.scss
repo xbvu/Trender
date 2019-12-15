@@ -1,0 +1,18 @@
+.results{
+    height: 30vh;
+    
+    &-graph{
+        padding-top: 2rem;
+       
+        text-align: center;
+        
+        &-canvas{
+            display: initial !important;
+            width: 28rem !important;
+            height: 13rem !important;
+        }
+        &-img{
+            height:17vh;
+        }
+    }
+}

@@ -1,0 +1,61 @@
+.story{
+    width:75%;
+    margin: 0 auto;//to center stuff in the block
+    box-shadow: 0 3rem 6rem rgba($color-black, $alpha: 0.1);
+    background-color: rgba($color-white, $alpha: 0.6);
+    border-radius: 3px;
+    padding:6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    & > * {
+        transform: skewX(12deg);
+    }
+    &__shape{
+        //only works if floated and has to have a height and width
+        width: 15rem;
+        height: 15rem;
+      //  background-color: orangered;
+        float: left;
+        --webkit-shape-outside:circle(50% at 50% 50%);
+        //Shape kit only defines where the contents float around the element not olike what clip path does  
+        shape-outside: circle(50% at 50% 50%) ;//first number in here is the radius adn the next  two are the position for x and y
+        --webkit-clip-path:circle(50% at 50% 50%);
+        clip-path:circle(50% at 50% 50%) ; 
+        transform:  skewX(12deg);
+        position: relative;
+    }
+    //For responsive design we always need widht for images
+    &__img{
+        height: 100%;//Cause widht wopuldnt fill up the image mateee 
+        transform: translateX(-4rem) scale(1.3);
+       // backface-visibility: hidden;
+        transition: all 0.5s;
+    }
+    &__text{
+        transform: skewX(12deg);
+    }
+    &__caption{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate( -50% , 20%);
+        color: $color-white;
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        text-align: center;
+        opacity: 0;
+        transition: all 0.5s;
+        backface-visibility: hidden;
+    }
+    &:hover &__caption{
+    opacity: 1;
+    transform: translate( -50% , -50%);
+    }
+    &:hover &__img{
+        transform: translateX(-4rem) scale(1);
+        
+        filter: blur(3px) brightness(80%) ;//Value above 100% makes it brightewr and lower makes it darker
+    }
+}

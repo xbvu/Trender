@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+
+        <script id="ExtJS" src="scripts/Chart.min.js"></script>
+        <script id=ChartJS src="scripts/TrendChart.js"></script>
+        <link rel="stylesheet" href="css/icon-font.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+        
+        <title>Trender | An all in one cryptocurrency Tool</title>
+    </head>
+    <body onload="Main()">
+        <div class="navigation">
+            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+            <label for="navi-toggle" class="navigation__button">
+                <span class="navigation__icon">
+                    &nbsp;
+                </span>
+            </label>
+            <div class="navigation__background">&nbsp;</div>
+            <nav class="navigation__nav">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><a href="index.html" class="navigation__link"> <span>01</span>Home</a></li>
+                    <li class="navigation__item"><a href="#" class="navigation__link"><span>02</span>Contact us</a></li>
+                    <li class="navigation__item"><a href="#" class="navigation__link"><span>03</span>About us</a></li>
+                   <li class="navigation__item"><a href="https://github.com/xbvu/Trender" class="navigation__link"><span>04</span>Documentation</a></li> 
+                 
+                </ul>
+            </nav>
+        </div>
+        <header class="header-search">
+            <div class="header__logo-box-center">
+                <img src="images/logo-black.png" alt="Logo" class="header__logo">
+            </div>
+        </header>
+        <main class="search-stats">
+            <div class="main-info-box">
+            <h1 class=" u-center-text heading-primary-search">ETHEREUM</h1>
+            <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam earum impedit minima dicta quisquam ab repellendus perspiciatis quo aliquid veritatis corrupti cupiditate culpa dolor ut laborum quidem minus, praesentium ipsa. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore aliquam, animi adipisci quod eveniet explicabo. Alias consectetur nam iste exercitationem doloremque distinctio in, praesentium minus earum, consequatur reprehenderit itaque fugit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor perferendis vitae consectetur adipisci sint laboriosam, fugit vel numquam quo ullam ea iste, nostrum exercitationem nisi placeat quidem illo laudantium cupiditate! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius omnis autem animi dignissimos temporibus vitae cum quibusdam debitis, repellendus nobis. Nisi nostrum placeat eos vero quas hic mollitia nam modi.</p>
+            </div>
+            
+            <div class="row">
+                    <div class="col-1-of-2">
+                       <div class="results">
+                           <div class="results-graph">
+                                <h3 class=" heading-graph-text">Popularity over Months</h3>
+                                <canvas 
+                                   class="results-graph-canvas" id="CanvasLC" width="10" height="10"
+                                ></canvas>
+                           </div>
+                       </div>
+                    </div>
+
+                    <div class="col-1-of-2">
+                        <div class="results">
+                           <div class="results-graph">
+                            <h3 class="u-center-text heading-graph-text">Price over Months</h3>
+                                <img src="images/Chart2.png" alt="graph2" class="results-graph-img">
+                           </div>
+                       </div>  
+                    </div>
+        </main>
+        
+        <footer class="footer u-margin-top-medium">
+      
+            <div class="row">
+                <div class="col-1-of-2">
+                    <div class="footer__navigation-search">
+                        <ul class="footer__list">
+                            <li class="footer__item"><a href="index.html" class="footer__link">Home</a></li>
+                            <li class="footer__item"><a href="#" class="footer__link">About Us</a></li>
+                            <li class="footer__item"><a href="" class="footer__link">Documentation</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-1-of-2">
+                    <p class="footer__copyright-search">
+                        <a href="#" class="footer__link">Trender</a> is a a all in one cryptocurrency tool.We can offer keyword search in a wider selection of
+                        cryptocurrency related sources than our competitors.
+                    </p>
+                </div>
+            </div>
+        </footer>
+        
+
+<!--
+    <footer class="footer">
+      
+        <div class="row">
+            <div class="col-1-of-2">
+                <div class="footer__navigation">
+                    <ul class="footer__list">
+                        <li class="footer__item"><a href="#" class="footer__link">About Us</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Contact Us</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-1-of-2">
+                <p class="footer__copyright">
+                    <a href="#" class="footer__link">Trender</a> for boom idk wtf
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae dicta cumque optio accusantium fugit reiciendis aut delectus placeat, nisi libero et quas nulla saepe deleniti id dolores molestias modi nesciunt?
+                </p>
+            </div>
+        </div>
+    </footer>
+-->
+
+
+        <!-- 
+        <section class="grid-test">
+            <div class="row">
+                <div class="col-1-of-2">
+                    Col 1 of 2 
+                </div><div class="col-1-of-2">
+                    Col 1 of 2 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1-of-3">
+                    Col 1 of 3
+                </div>
+                <div class="col-1-of-3">
+                    Col 1 of 3
+                </div>
+                <div class="col-1-of-3">
+                    Col 1 of 3
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1-of-3">
+                    Col 1 of 3
+                </div>
+                <div class="col-2-of-3">
+                    Col 2 of 3
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-2-of-4">
+                    Col 2 of 4
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1-of-4">
+                    Col 1 of 4
+                </div>
+                <div class="col-3-of-4">
+                    Col 3 of 4
+                </div>
+            </div>
+        </section>
+        -->
+    </body>
+</html>

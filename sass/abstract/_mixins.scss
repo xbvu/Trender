@@ -1,0 +1,56 @@
+@mixin clearfix {
+   &::after{
+       content: "";
+       display: table;
+       clear: both;
+   } 
+}
+
+@mixin absCenter {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+//MEDIA query managerr 
+/*
+0-600px for the phone
+600-900px for tablet portrait
+900-1200 for tablet landscape
+{1200-1800}- normal stylingg boi
+1800px+ : Big desktop
+*/
+
+/*
+
+$breakpoint arguement choices:
+-phone
+-tab-port
+-tab-land
+-big-desktop
+*/
+
+//A media query manager
+
+//these units depend on the browsers default font size so its much beter
+
+@mixin respond($breakpoint) {
+    //best to use em they doine get affected by your html font size
+    @if $breakpoint ==phone{
+        @media (max-width:37.5em) { @content };//600px
+    }    
+    @if $breakpoint == tab-port{
+        @media (max-width:56.25em) { @content };//900px
+    }
+    @if $breakpoint == tab-land{
+        @media (max-width:75em) { @content };//1200px
+    } 
+    @if $breakpoint == big-desktop{
+        @media (min-width:112.5em) { @content };//1800px
+    } 
+    
+}
+
+
+
