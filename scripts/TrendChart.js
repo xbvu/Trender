@@ -1,5 +1,7 @@
 function Main(){
     DrawChart(LabelsArr,DataArr); //! pass options arr later
+    io = new IOHandler("127.0.0.1", "brk");
+    io.QueryBuilder();
 }
 
 function DrawChart(LabelsArrPr, DataArrPr, OptionsArrPr){
@@ -39,5 +41,51 @@ function ChartDataAdapter(InputData,InputLabels){ //get and check data
     }
     else{
         //TODO everything is ok carry on with data processing
+    }
+}
+
+class IOHandler{
+    constructor(ServerAddress, searchstring) {
+        this.Searchstring = searchstring //! conflict on this
+        this.ServerAddress = ServerAddress
+    }
+
+    JStoJSON() {
+        alert("bamshaka")
+    } //waybe won't need this since url.append is there
+
+    JSONtoJS(response) {
+        if(response == "" || response == null){
+            //empty response try again
+            alert("empty response")
+        }
+        else{
+            //because the response will be a singular array it will be split in 2 and first half is values
+
+            var ResponseArray = JSON.parse(response);
+            var SepPoint = response.length() / 2;
+
+            var ResponseValues;
+            var ResponseLabels;
+
+            for(c = 0; c < SepPoint; c++){
+                ResponseValues = ResponseArray;
+            }
+            for(i = SepPoint; i < response.length; c++){
+                ResponseLabels = ResponseArray;
+            }
+        }
+        alert(response) //for testing
+    }
+
+    QueryBuilder() {
+        var url = new URL("http://127.0.0.1"); //! change later
+        url.searchParams.append("srch", this.Searchstring);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.onload = this.JSONtoJS(xhr.response);
+        xhr.send();
+
     }
 }
