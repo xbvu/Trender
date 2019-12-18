@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link href="styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/Chart.min.js"></script>
+    <script type="text/javascript" src="scripts/transition.js"></script>
+    <script type="text/javascript" src="scripts/collapse.js"></script>
+    <script type="text/javascript" src="scripts/moment.min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap-datetimepicker.min.js"></script>
+    <style>
+        .checkbox-menu li label {
+            display: block;
+            padding: 3px 10px;
+            clear: both;
+            font-weight: normal;
+            line-height: 1.42857143;
+            white-space: nowrap;
+            margin: 0;
+            transition: background-color .4s ease;
+        }
+
+        .checkbox-menu li input {
+            margin: 0px 5px;
+            top: 2px;
+            position: relative;
+        }
+
+        .checkbox-menu li.active label {
+            background-color: #cbcbff;
+            font-weight: bold;
+        }
+
+        .checkbox-menu li label:hover,
+        .checkbox-menu li label:focus {
+            background-color: #f5f5f5;
+        }
+
+        .checkbox-menu li.active label:hover,
+        .checkbox-menu li.active label:focus {
+            background-color: #b8b8ff;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="container-fluid">
+                                                                        <h1 class="text-center">
+                        Trender
+                    </h1>
+                                        <hr>
+            <div class="row">
+                <div class="col-sm-12 main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <div class="row">
+                                    <div class="col-xs-12">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
+        <div class="input-group-btn">
+          <button class="btn btn-primary" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <label class="control-label">Date from</label>
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <script type="text/javascript">
+                                                    $(function() {
+                                                        $('#datetimepicker1').datetimepicker();
+                                                    });
+
+                                                </script>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <label class="control-label">Date to</label>
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker2'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <script type="text/javascript">
+                                                    $(function() {
+                                                        $('#datetimepicker2').datetimepicker();
+                                                    });
+
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <label class="control-label">Time interval</label>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-block btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                        Select time interval
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                        <li><a href="#">Hour</a></li>
+                                                        <li><a href="#">Day</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <label class="control-label">Source selection</label>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-block btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                        Select source
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox"> Twitter
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox"> Reddit
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox"> News sites
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <hr>
+                                        <canvas id="myChart" width="400" height="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['12/11', '12/12', '12/13', '12/14', '12/15', '12/16', '12/17'],
+                datasets: [{
+                    label: '# of Mentions',
+                    data: [12, 19, 3, 5, 2, 3, 4],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.05)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 3
+                },
+                          {
+                    label: 'relative price fluctuation',
+                    data: [11, 18, 4, 8, 4, 4, 3],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.0)',
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    </script>
+    <script>
+        $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
+            $(this).closest("li").toggleClass("active", this.checked);
+        });
+
+        $(document).on('click', '.allow-focus', function(e) {
+            e.stopPropagation();
+        });
+
+    </script>
+</body>
+
+</html>
