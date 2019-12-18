@@ -41,41 +41,10 @@ function ChartDataAdapter(InputData,InputLabels){ //get and check data
     }
 }
 
-class IOHandler{
+class Rquest{
     constructor(ServerAddress, searchstring) {
         this.Searchstring = searchstring //! conflict on this
         this.ServerAddress = ServerAddress
-    }
-
-    JStoJSON() {
-        //alert("bamshaka")
-    } //waybe won't need this since url.append is there
-
-    JSONtoJS(response) {
-        if(response == "" || response == null){
-            //empty response try again
-            //alert("empty response")
-            console.log("empty response")
-        }
-        else{
-            //because the response will be a singular array it will be split in 2 and first half is values
-
-            var ResponseArray = JSON.parse(response);
-            var SepPoint = response.length() / 2;
-
-            var ResponseValues;
-            var ResponseLabels;
-
-            for(c = 0; c < SepPoint; c++){
-                ResponseValues = ResponseArray;
-            }
-            for(i = SepPoint; i < response.length; c++){
-                ResponseLabels = ResponseArray;
-            }
-            console.log(response)
-        }
-        //alert(response) //for testing
-        
     }
 
     QueryBuilder() {
@@ -90,29 +59,78 @@ class IOHandler{
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function(){
-                console.log(alert((xhr.responseText)));
+            //var Parsed = JSON.parse(xhr.responseText);
+            //console.log(Parsed[1].timestamp);
+            //console.log(Parsed.length);
+            var Parsed = (xhr.responseText);
+            //alert(Parsed);
+
+            var FieldNames = ["search_scope","search_term","timestamp"]
+            var EntryNumber = Parsed.length;
+            
+            var SearchScopeArr = [];
+            var SearchTermArr = [];
+            var TimestampArr = [];
+
+            //return(Parsed[0].timestamp);
+
+            var Entry = 0;
+            var Field = 0; 
+            for(Entry=0; Entry < EntryNumber; Entry++){ //! this is O(n^2)
+                for(Field=0; Field < 3; Field++){
+                    if(Field == 0){
+                        SearchScopeArr[Entry] = Parsed[Entry].FieldNames[Field];
+                    }
+                    else if(Field == 1){
+                        SearchTermArr[Entry] = Parsed[Entry].FieldNames[Field];
+                    }
+                    else if (Field == 2){
+                        TimestampArr[Entry] = Parsed[Entry].FieldNames[Field];
+                    }
+                }
+            }
+
+            for(j=0; j < 2; j++){
+                alert(SearchTermArr);
+            }
+
             
         }
-        //xhr.onload = this.JSONtoJS(xhr.responseText);
-        
-        //xhr.addEventListener("loadend",function(){console.log("load complete")}) // for testing
-
-        //console.log(xhr.responseText);
-        
+               
         try{
             xhr.send(params);
         }catch(error){
             console.log(error)
         }
     }
+
+
+}
+
+class ChartInterpreter{ //? might need alot of fields here
+    constructor(RawInput){
+        this.RawInput = RawInput
+        this.Object = Object 
+    }
+    test(){
+        //console.log(this.RawInput);
+    }
+
 }
 
 function Main(){
     console.log("attempting connection")
     //DrawChart(LabelsArr,DataArr); //! pass options arr later
-    io = new IOHandler("http://45.32.184.69:8080/api/search", "bitcoin");
+    io = new Rquest("http://45.32.184.69:8080/api/search", "bitcoin");
+    
+    
     io.QueryBuilder();
     
+    //cd = new ChartInterpreter(DataOutput);
+    //cd.test();
+
+    //console.log(ParsedResponse[1].timestamp);
+    //console.log(ParsedResponse.length);
 }
 
 //Main(); //for testing
