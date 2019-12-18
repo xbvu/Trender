@@ -79,25 +79,33 @@ class IOHandler{
     }
 
     QueryBuilder() {
-        var url = new URL("http://127.0.0.1:4042"); //! change later
-        url.searchParams.append("srch", this.Searchstring);
+        var url = new URL(this.ServerAddress); //! change later
+        url.searchParams.append("search_term", this.Searchstring);
         
         //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         var xhr = new XMLHttpRequest();
+
         xhr.open("POST", url);
         xhr.onload = this.JSONtoJS(xhr.response);
-        xhr.addEventListener("loadend",function(){console.log("load complete")})
-        xhr.send();
+        
+        xhr.addEventListener("loadend",function(){console.log("load complete")}) // for testing
 
+        console.log(xhr.response);
+        
+        try{
+            xhr.send();
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 
 function Main(){
-    console.log("asdjsakjld")
+    console.log("attempting connection")
     //DrawChart(LabelsArr,DataArr); //! pass options arr later
-    io = new IOHandler("127.0.0.1", "brk");
+    io = new IOHandler("http://45.32.184.69:8080/api/search", "bitcoin");
     io.QueryBuilder();
     
 }
 
-Main(); //for testing
+//Main(); //for testing
