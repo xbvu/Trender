@@ -80,20 +80,27 @@ class IOHandler{
 
     QueryBuilder() {
         var url = new URL(this.ServerAddress); //! change later
-        url.searchParams.append("search_term", this.Searchstring);
+        //url.searchParams.append("search_term", this.Searchstring);
+        var params = "search_term" + "=" + this.Searchstring;
         
         //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         var xhr = new XMLHttpRequest();
 
         xhr.open("POST", url);
-        xhr.onload = this.JSONtoJS(xhr.response);
-        
-        xhr.addEventListener("loadend",function(){console.log("load complete")}) // for testing
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-        console.log(xhr.response);
+        xhr.onload = function(){
+                console.log(alert((xhr.responseText)));
+            
+        }
+        //xhr.onload = this.JSONtoJS(xhr.responseText);
+        
+        //xhr.addEventListener("loadend",function(){console.log("load complete")}) // for testing
+
+        //console.log(xhr.responseText);
         
         try{
-            xhr.send();
+            xhr.send(params);
         }catch(error){
             console.log(error)
         }
