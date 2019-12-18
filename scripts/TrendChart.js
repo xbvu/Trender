@@ -1,8 +1,5 @@
-function Main(){
-    DrawChart(LabelsArr,DataArr); //! pass options arr later
-    io = new IOHandler("127.0.0.1", "brk");
-    io.QueryBuilder();
-}
+
+
 
 function DrawChart(LabelsArrPr, DataArrPr, OptionsArrPr){
     //alert("function triggered") //for debug
@@ -51,13 +48,14 @@ class IOHandler{
     }
 
     JStoJSON() {
-        alert("bamshaka")
+        //alert("bamshaka")
     } //waybe won't need this since url.append is there
 
     JSONtoJS(response) {
         if(response == "" || response == null){
             //empty response try again
-            alert("empty response")
+            //alert("empty response")
+            console.log("empty response")
         }
         else{
             //because the response will be a singular array it will be split in 2 and first half is values
@@ -74,18 +72,32 @@ class IOHandler{
             for(i = SepPoint; i < response.length; c++){
                 ResponseLabels = ResponseArray;
             }
+            console.log(response)
         }
-        alert(response) //for testing
+        //alert(response) //for testing
+        
     }
 
     QueryBuilder() {
-        var url = new URL("http://127.0.0.1"); //! change later
+        var url = new URL("http://127.0.0.1:4042"); //! change later
         url.searchParams.append("srch", this.Searchstring);
-
+        
+        //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url);
         xhr.onload = this.JSONtoJS(xhr.response);
+        xhr.addEventListener("loadend",function(){console.log("load complete")})
         xhr.send();
 
     }
 }
+
+function Main(){
+    console.log("asdjsakjld")
+    //DrawChart(LabelsArr,DataArr); //! pass options arr later
+    io = new IOHandler("127.0.0.1", "brk");
+    io.QueryBuilder();
+    
+}
+
+Main(); //for testing
