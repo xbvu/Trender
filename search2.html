@@ -13,7 +13,13 @@
     <script type="text/javascript" src="scripts/collapse.js"></script>
     <script type="text/javascript" src="scripts/moment.min.js"></script>
     <script type="text/javascript" src="scripts/bootstrap-datetimepicker.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
     <style>
+        body{
+            font-family: 'Poppins', sans-serif;
+            background-color: #dadada;
+            color: #1d1d1d;
+        }
         .checkbox-menu li label {
             display: block;
             padding: 3px 10px;
@@ -24,7 +30,12 @@
             margin: 0;
             transition: background-color .4s ease;
         }
-
+        .logo-text{
+            font-size: 4rem;
+            font-family: inherit;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
         .checkbox-menu li input {
             margin: 0px 5px;
             top: 2px;
@@ -35,10 +46,12 @@
             background-color: #cbcbff;
             font-weight: bold;
         }
-
+        .checkbox-menu {
+            color: #dadada;
+        }
         .checkbox-menu li label:hover,
         .checkbox-menu li label:focus {
-            background-color: #f5f5f5;
+            background-color: #1870b9;
         }
 
         .checkbox-menu li.active label:hover,
@@ -54,7 +67,7 @@
     <div class="container-fluid">
 
         <div class="container-fluid">
-                                                                        <h1 class="text-center">
+                    <h1 class="text-center logo-text">
                         Trender
                     </h1>
                                         <hr>
