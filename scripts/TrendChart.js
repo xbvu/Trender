@@ -109,57 +109,58 @@ class ChartInterpreter{ //? might need alot of fields here
     test(){
         //console.log(this.RawInput);
     }
-    InitArrays(){ //max length will be length of  timearray
+    InitArrays(){
         for(var c=0; c < this.TimeArray.length; c++){
             this.TimeArray[c] = String(this.GetStampDate(this.TimeArray));
-            //console.log(this.TimeArray[c])
         }
 
-        var points;
+        var points = 0;
         for(var i=0; i < this.TimeArray.length; i++){
             if(i == this.TimeArray.length - 1){
-                if(this.GetTimeDifference(i-1, i) == 0){
-                    points++;
+                if(this.GetTimeDifference(this.TimeArray[i-1], this.TimeArray[i]) == 0){
+                    points++
+                    //save and reset
+                    this.ValuesArray.push(points);
                 }
                 else{
                     //save and reset
                     this.ValuesArray.push(points);
-                    points = 0;
+                    points = 1;
                 }
             }
             else{
-                if(this.GetTimeDifference(i, i+1) == 0){
+                if(this.GetTimeDifference(this.TimeArray[i-1], this.TimeArray[i]) == 0){
                     points++
                 }
                 else{
                     //save and reset
                     this.ValuesArray.push(points);
-                    points = 0;
+                    points = 1;
                 }
             }
-            this.GetTimeDifference(i+1,i+1)
         }
-    }
+        this.TimeArray = [... new Set(this.TimeArray)]
+        this.ValuesArray = this.ValuesArray.splice(-1,1); //! may result in undefined behaviour on high numbers
+        
+        //TODO these arrays are ready to pass to the chart
+        this.TimeArray
+        this.ValuesArray
 
+        //for testing
+        //console.log(this.TimeArray)
+        //console.log(this.ValuesArray)
+        
+    }
 
     GetStampDate(timestamp){
         var date = new Date();
-        var ztod = date.toISOString(timestamp).substring(5,7)//.substring(0,10); //! UTC time (Zulu) down to ms
-        console.log(String((ztod)));
+        var ztod = date.toISOString(timestamp).substring(0,10); //! UTC time (Zulu) down to ms
         return ztod;
-        //TODO save this back into the same array of timestamps and it will be ready to pass
     }
     GetTimeDifference(date1, date2){
-        //console.log(date1.substring(5,7));
-        var Diff = parseInt(date1.substring(5,7), 10) - parseInt(date2.substring(5,7), 10);
+        var Diff = parseInt(String(date1).substring(5,7), 10) - parseInt(String(date2).substring(5,7), 10);
         return Diff;
     }
-
-    CalculatePopularity(){
-        //TODO use differential of time to and add +1 to 0 for each mention within a day
-
-    }
-
 }
 
 function Main(){
@@ -174,12 +175,8 @@ function Main(){
     */
     
 
-    //var CI = new ChartInterpreter()
-    //CI.InitArrays();
-
-    for(var c=0;c<3;c++){
-        console.log(c);
-    }
+    var CI = new ChartInterpreter()
+    CI.InitArrays();
 }
 
 Main(); //for testing
