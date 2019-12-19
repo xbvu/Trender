@@ -89,10 +89,10 @@ class Rquest{
             }
             //alert(Parsed[0].search_term) //example
             //var OutputArr = new Array(SearchScopeArr, SearchTermArr/*, TimeStampArr*/)
-            //var OutputArr = [];
-            //OutputArr = [SearchScopeArr, SearchTermArr, TimeStampArr];
-            console.log(SearchScopeArr)
-            return SearchScopeArr;
+            var OutputArr = [];
+            OutputArr = [SearchScopeArr, SearchTermArr, TimeStampArr];
+            //console.log(SearchScopeArr)
+            return OutputArr;
             
             //Rquest.prototype.OutputArrayComplex = OutputArr;
             //Rquest.prototype.GlobaliseResults(OutputArr);
@@ -181,7 +181,7 @@ function Main(){
     //var tst3D = [];
 
     var tst3D = io.QueryBuilder();
-    console.log(tst3D[0])
+    alert(typeof(tst3D))
     //tst3D = io.GetResult();
     //console.log(tst3D);
     //alert(tst3D)
