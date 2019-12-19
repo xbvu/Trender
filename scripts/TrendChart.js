@@ -42,8 +42,9 @@ function ChartDataAdapter(InputData,InputLabels){ //get and check data
 
 class Rquest{
     constructor(ServerAddress, searchstring) {
-        this.Searchstring = searchstring //! conflict on this
-        this.ServerAddress = ServerAddress
+        this.Searchstring = searchstring; //! conflict on this
+        this.ServerAddress = ServerAddress;
+        this.OutputArrayComplex = [];
         
     }
 
@@ -53,6 +54,7 @@ class Rquest{
     }
     
     GetResult(){ //TODO test for undefined
+        //console.log(OutputArrayComplex)
         return this.OutputArrayComplex;
     }
 
@@ -86,24 +88,28 @@ class Rquest{
                 }
             }
             //alert(Parsed[0].search_term) //example
-
-            var OutputArr = [SearchScopeArr, SearchTermArr, TimeStampArr];
+            //var OutputArr = new Array(SearchScopeArr, SearchTermArr/*, TimeStampArr*/)
+            //var OutputArr = [];
+            //OutputArr = [SearchScopeArr, SearchTermArr, TimeStampArr];
+            console.log(SearchScopeArr)
+            return SearchScopeArr;
             
             //Rquest.prototype.OutputArrayComplex = OutputArr;
-            Rquest.prototype.GlobaliseResults(OutputArr);
+            //Rquest.prototype.GlobaliseResults(OutputArr);
         }       
         try{
             xhr.send(params);
         }catch(error){
             console.log(error)
         }
+        return this.OutputArrayComplex;
     }
 }
 
 class ChartInterpreter{ //? might need alot of fields here
     constructor(/*RawInput*/){
-        //this.RawInput = RawInput
-        this.TimeArray = [1576688300,1576598137,1576650136,1576086449];
+        //this.RawInput = RawInput;
+        this.TimeArray = [1576688300,1576598137,1576650136,1576086449]; //TODO make this response from Rquester
         this.ValuesArray = [];
     }
     test(){
@@ -118,7 +124,7 @@ class ChartInterpreter{ //? might need alot of fields here
         for(var i=0; i < this.TimeArray.length; i++){
             if(i == this.TimeArray.length - 1){
                 if(this.GetTimeDifference(this.TimeArray[i-1], this.TimeArray[i]) == 0){
-                    points++
+                    points++;
                     //save and reset
                     this.ValuesArray.push(points);
                 }
@@ -130,7 +136,7 @@ class ChartInterpreter{ //? might need alot of fields here
             }
             else{
                 if(this.GetTimeDifference(this.TimeArray[i-1], this.TimeArray[i]) == 0){
-                    points++
+                    points++;
                 }
                 else{
                     //save and reset
@@ -139,12 +145,13 @@ class ChartInterpreter{ //? might need alot of fields here
                 }
             }
         }
-        this.TimeArray = [... new Set(this.TimeArray)]
+        this.TimeArray = [... new Set(this.TimeArray)];
         this.ValuesArray = this.ValuesArray.splice(-1,1); //! may result in undefined behaviour on high numbers
-        
-        //TODO these arrays are ready to pass to the chart
-        this.TimeArray
-        this.ValuesArray
+        this.TimeArray;
+        this.ValuesArray;
+
+        var outarr = [this.TimeArray, this.ValuesArray];
+        return outarr;
 
         //for testing
         //console.log(this.TimeArray)
@@ -157,6 +164,7 @@ class ChartInterpreter{ //? might need alot of fields here
         var ztod = date.toISOString(timestamp).substring(0,10); //! UTC time (Zulu) down to ms
         return ztod;
     }
+
     GetTimeDifference(date1, date2){
         var Diff = parseInt(String(date1).substring(5,7), 10) - parseInt(String(date2).substring(5,7), 10);
         return Diff;
@@ -164,19 +172,35 @@ class ChartInterpreter{ //? might need alot of fields here
 }
 
 function Main(){
-    /*
     console.log("attempting connection")
-    //DrawChart(LabelsArr,DataArr); //! pass options arr later
-    io = new Rquest("http://45.32.184.69:8080/api/search", "bitcoin");
+    var io = new Rquest("http://45.32.184.69:8080/api/search", "bitcoin");
     
-    io.QueryBuilder();
-    alert(io.OutputArrayComplex)
-    //var tstarr = [];
-    */
-    
+    //var RequestOutArr3D = [];
+    //RequestOutArr3D = io.QueryBuilder();
+    //alert(RequestOutArr3D[0]);
+    //var tst3D = [];
 
-    var CI = new ChartInterpreter()
-    CI.InitArrays();
+    var tst3D = io.QueryBuilder();
+    console.log(tst3D[0])
+    //tst3D = io.GetResult();
+    //console.log(tst3D);
+    //alert(tst3D)
+    
+    //alert(io.OutputArrayComplex)
+    //var tstarr = [];
+    
+    var CI = new ChartInterpreter();
+
+    var ResultArray2D = []; //[0][n] is time | [1][n] is values
+    
+    ResultArray2D = CI.InitArrays();
+    var ChartLabelsArr = ResultArray2D[0];
+    var ChartDataArr = ResultArray2D[1];
+
+    DrawChart(ChartLabelsArr,ChartDataArr); //TODO pass options arr later // works only with webpage
+
+    //console.log(ResultArray2D[0][0]); //? how is this working but the response doesn't export???
+    //? maybe because the called function is the same as the returning one ?????
 }
 
-Main(); //for testing
+//Main(); //for testing
