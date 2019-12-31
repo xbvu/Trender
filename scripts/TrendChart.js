@@ -49,7 +49,7 @@ class Rquest{
     }
 
     GlobaliseResults(InputArray){ //! bad memory management due to copying
-        this.OutputArrayComplex = String(InputArray);
+        this.OutputArrayComplex = InputArray;
         //alert(this.OutputArrayComplex); //array globalised via this
     }
     
@@ -67,6 +67,7 @@ class Rquest{
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function(){
+            alert("triggered")
             var Parsed = JSON.parse(xhr.responseText);
             var EntryNumber = Parsed.length; //? this is 100 for some reason
             
@@ -89,20 +90,27 @@ class Rquest{
             }
             //alert(Parsed[0].search_term) //example
             //var OutputArr = new Array(SearchScopeArr, SearchTermArr/*, TimeStampArr*/)
+            
             var OutputArr = [];
             OutputArr = [SearchScopeArr, SearchTermArr, TimeStampArr];
-            //console.log(SearchScopeArr)
+            alert("before return");
+
             return OutputArr;
             
-            //Rquest.prototype.OutputArrayComplex = OutputArr;
+            //console.log(SearchScopeArr)
+            //this.GlobaliseResults(OutputArr);
+            
             //Rquest.prototype.GlobaliseResults(OutputArr);
+            
+            //Rquest.prototype.OutputArrayComplex = OutputArr;
         }       
         try{
             xhr.send(params);
         }catch(error){
             console.log(error)
         }
-        return this.OutputArrayComplex;
+        alert("final before")
+        //return this.OutputArrayComplex; //! this is being returned instead of the 3D array
     }
 }
 
@@ -151,11 +159,11 @@ class ChartInterpreter{ //? might need alot of fields here
         this.ValuesArray;
 
         var outarr = [this.TimeArray, this.ValuesArray];
-        return outarr;
+        //return outarr;
 
         //for testing
-        //console.log(this.TimeArray)
-        //console.log(this.ValuesArray)
+        console.log(this.TimeArray)
+        console.log(this.ValuesArray)
         
     }
 
@@ -172,7 +180,7 @@ class ChartInterpreter{ //? might need alot of fields here
 }
 
 function Main(){
-    console.log("attempting connection")
+    /*console.log("attempting connection")
     var io = new Rquest("http://45.32.184.69:8080/api/search", "bitcoin");
     
     //var RequestOutArr3D = [];
@@ -181,13 +189,13 @@ function Main(){
     //var tst3D = [];
 
     var tst3D = io.QueryBuilder();
-    alert(typeof(tst3D))
+    alert((tst3D))
     //tst3D = io.GetResult();
     //console.log(tst3D);
     //alert(tst3D)
     
     //alert(io.OutputArrayComplex)
-    //var tstarr = [];
+    //var tstarr = [];*/
     
     var CI = new ChartInterpreter();
 
@@ -197,10 +205,10 @@ function Main(){
     var ChartLabelsArr = ResultArray2D[0];
     var ChartDataArr = ResultArray2D[1];
 
-    DrawChart(ChartLabelsArr,ChartDataArr); //TODO pass options arr later // works only with webpage
+    //DrawChart(ChartLabelsArr,ChartDataArr); //TODO pass options arr later // works only with webpage
 
     //console.log(ResultArray2D[0][0]); //? how is this working but the response doesn't export???
     //? maybe because the called function is the same as the returning one ?????
 }
 
-//Main(); //for testing
+Main(); //for testing
