@@ -9,6 +9,6 @@
   "author": "Aniket Chauhan",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.1"
   }
 }
